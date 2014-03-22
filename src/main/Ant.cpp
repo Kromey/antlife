@@ -16,7 +16,13 @@ int Ant::getAge()
 	return age;
 }
 
-void Ant::update()
+bool Ant::update()
 {
-	age++;
+	if(this->age < Ant::MAX_AGE)
+	{
+		++this->age;
+		return true;
+	} else {
+		return false;
+	}
 }

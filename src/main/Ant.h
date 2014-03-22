@@ -8,7 +8,7 @@ class Ant
 		Ant();
 		bool isAlive();
 		int getAge();
-		void update();
+		bool update();
 	private:
 		int age;
 };
