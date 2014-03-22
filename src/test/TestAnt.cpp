@@ -7,7 +7,7 @@ TEST(AntTest, NewAntIsAlive)
 	EXPECT_EQ(true, a1.isAlive());
 }
 
-TEST(AntTest, NewAntIsZero)
+TEST(AntTest, NewAntIsAgeZero)
 {
 	Ant a1;
 	EXPECT_EQ(0, a1.getAge());
