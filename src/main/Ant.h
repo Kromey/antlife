@@ -4,6 +4,7 @@
 class Ant
 {
 	public:
+		static const int MAX_AGE;
 		Ant();
 		bool isAlive();
 		int getAge();

@@ -20,6 +20,16 @@ TEST(AntTest, AntAgesAfterUpdate)
 	EXPECT_EQ(1, a1.getAge());
 }
 
+TEST(AntTest, AntDiesAfterMaxAge)
+{
+	Ant a1;
+	for(int i=0; i < Ant::MAX_AGE; ++i)
+	{
+		a1.update();
+	}
+	EXPECT_FALSE(a1.isAlive());
+}
+
 
 int main(int argc, char **argv)
 {
