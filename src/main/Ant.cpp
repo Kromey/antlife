@@ -1,5 +1,7 @@
 #include <cstdlib>
+#include <ctime>
 #include "Ant.h"
+
 
 const int Ant::MAX_AGE = 100;
 const float Ant::AGE_VARIANCE = 0.2;
@@ -10,6 +12,7 @@ Ant::Ant() : age(0)
 	minAgeLimit = (1.0 - Ant::AGE_VARIANCE) * Ant::MAX_AGE;
 	maxAgeLimit = (1.0 + Ant::AGE_VARIANCE) * Ant::MAX_AGE;
 
+	srand(time(NULL));
 	this->ageLimit = rand() % (maxAgeLimit - minAgeLimit) + minAgeLimit;
 }
 
