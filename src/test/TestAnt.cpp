@@ -22,23 +22,26 @@ TEST(AntTest, AntAgesAfterUpdate)
 
 TEST(AntTest, AntDiesOfOldAge)
 {
-	int minAge, maxAge;
-	minAge = 0.8 * Ant::MAX_AGE;
-	maxAge = 1.2 * Ant::MAX_AGE;
-	for(int i=0; i < 10; ++i)
+	int minAgeLimit, maxAgeLimit;
+	bool ageVaries = false;
+	minAgeLimit = (1.0 - Ant::AGE_VARIANCE) * Ant::MAX_AGE;
+	maxAgeLimit = (1.0 + Ant::AGE_VARIANCE) * Ant::MAX_AGE;
+	for(int i=0; i < 1000; ++i)
 	{
 		Ant a1;
 		while(a1.update())
 		{
-			if(a1.getAge() > maxAge)
+			if(a1.getAge() > maxAgeLimit)
 			{
 				break;
 			}
 		}
 		EXPECT_FALSE(a1.isAlive());
-		EXPECT_TRUE(a1.getAge() >= minAge);
-		EXPECT_TRUE(a1.getAge() <= maxAge);
+		EXPECT_TRUE(a1.getAge() >= minAgeLimit);
+		EXPECT_TRUE(a1.getAge() <= maxAgeLimit);
+		ageVaries = a1.getAge() != Ant::MAX_AGE;
 	}
+	EXPECT_TRUE(ageVaries);
 }
 
 

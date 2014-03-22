@@ -1,14 +1,21 @@
+#include <cstdlib>
 #include "Ant.h"
 
 const int Ant::MAX_AGE = 100;
+const float Ant::AGE_VARIANCE = 0.2;
 
 Ant::Ant() : age(0)
 {
+	int minAgeLimit, maxAgeLimit;
+	minAgeLimit = (1.0 - Ant::AGE_VARIANCE) * Ant::MAX_AGE;
+	maxAgeLimit = (1.0 + Ant::AGE_VARIANCE) * Ant::MAX_AGE;
+
+	this->ageLimit = rand() % (maxAgeLimit - minAgeLimit) + minAgeLimit;
 }
 
 bool Ant::isAlive()
 {
-	return this->age < Ant::MAX_AGE;
+	return this->age < this->ageLimit;
 }
 
 int Ant::getAge()
@@ -18,7 +25,7 @@ int Ant::getAge()
 
 bool Ant::update()
 {
-	if(this->age < Ant::MAX_AGE)
+	if(this->age < this->ageLimit)
 	{
 		++this->age;
 		return true;
