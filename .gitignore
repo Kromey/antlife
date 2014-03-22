@@ -1,3 +1,9 @@
+# Tags file
+tags
+
+# Compiled unit test executable
+TestAnt
+
 # Compiled Object files
 *.slo
 *.lo
